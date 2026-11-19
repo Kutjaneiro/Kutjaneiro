@@ -34,7 +34,7 @@
 ## 📊 GitHub stats
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=Kutjaneiro&show_icons=true&include_all_commits=true&count_private=true&theme=dracula" height="150" alt="GitHub stats" />
+  <img src="https://raw.githubusercontent.com/Kutjaneiro/Kutjaneiro/output/stats.svg" height="150" alt="GitHub stats (public + private repos)" />
   <img src="https://raw.githubusercontent.com/Kutjaneiro/Kutjaneiro/output/top-langs.svg" height="150" alt="Most used languages (public + private repos)" />
 </div>
 

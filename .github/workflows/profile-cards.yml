@@ -1,4 +1,4 @@
-name: Generate languages card
+name: Generate profile cards
 
 on:
   schedule:
@@ -18,19 +18,20 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - name: generate top-langs.svg (public + private repos)
+      - name: generate stats + languages cards (public + private repos)
         id: gen
         env:
           GH_TOKEN: ${{ secrets.LANGS_TOKEN }}
         run: |
           if [ -z "$GH_TOKEN" ]; then
-            echo "::warning::Missing LANGS_TOKEN secret (fine-grained PAT, All repositories, Metadata: read). Card not updated."
+            echo "::warning::Missing LANGS_TOKEN secret (fine-grained PAT, All repositories, Metadata + Contents: read). Cards not updated."
             exit 0
           fi
           python3 scripts/top_langs.py
+          python3 scripts/stats.py
           echo "ok=true" >> "$GITHUB_OUTPUT"
 
-      - name: push top-langs.svg to the output branch
+      - name: push cards to the output branch
         if: steps.gen.outputs.ok == 'true'
         uses: crazy-max/ghaction-github-pages@v5
         with:
