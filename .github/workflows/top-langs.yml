@@ -1,0 +1,40 @@
+name: Generate languages card
+
+on:
+  schedule:
+    - cron: "0 6 * * *" # daily
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  generate:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: generate top-langs.svg (public + private repos)
+        id: gen
+        env:
+          GH_TOKEN: ${{ secrets.LANGS_TOKEN }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::warning::Missing LANGS_TOKEN secret (fine-grained PAT, All repositories, Metadata: read). Card not updated."
+            exit 0
+          fi
+          python3 scripts/top_langs.py
+          echo "ok=true" >> "$GITHUB_OUTPUT"
+
+      - name: push top-langs.svg to the output branch
+        if: steps.gen.outputs.ok == 'true'
+        uses: crazy-max/ghaction-github-pages@v5
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

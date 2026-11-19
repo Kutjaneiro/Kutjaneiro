@@ -35,12 +35,6 @@
 
 <div align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=Kutjaneiro&show_icons=true&include_all_commits=true&count_private=true&theme=dracula" height="150" alt="GitHub stats" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=Kutjaneiro&layout=compact&card_width=320&langs_count=5&theme=dracula" height="150" alt="Top languages" />
+  <img src="https://raw.githubusercontent.com/Kutjaneiro/Kutjaneiro/output/top-langs.svg" height="150" alt="Most used languages (public + private repos)" />
 </div>
 
-<div align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Kutjaneiro/Kutjaneiro/output/pacman-contribution-graph-dark.svg" />
-    <img src="https://raw.githubusercontent.com/Kutjaneiro/Kutjaneiro/output/pacman-contribution-graph.svg" alt="Pac-Man contribution graph" />
-  </picture>
-</div>
